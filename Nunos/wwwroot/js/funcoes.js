@@ -384,3 +384,146 @@ function GetCardsCaminhaoQuebrouAviso()
 
     return cards;
 }
+
+
+
+
+
+
+
+function GetTodasMensagens()
+{
+    var tdsMsgs =
+        [
+            {
+                "Marca": "Mercedes",
+                "Cor": "Verde",
+                "Placa": "ABC-1233",
+                "Texto": "MEU CAMINHÃO QUEBROU GALERA... deve ser a bateria... alguém pode me dar uma chupeta?",
+                "CorFundo": "laranja",
+                "Data": "à 15 minutos atrás",
+                "CaminhoneiroId": "4",
+                "NomeCaminhoneiro": "Fábien Oliveira"
+            },
+            {
+                "Marca": "Mercedes",
+                "Cor": "Verde",
+                "Placa": "ABC-1231",
+                "Texto": "Parei em um acostamento aqui... to passando mal galera, se puder da uma ajudada eu agradeço...",
+                "CorFundo": "vermelho",
+                "Data": "à 3 minutos atrás",
+                "CaminhoneiroId": "2",
+                "NomeCaminhoneiro": "Willian Chan"
+            },
+            {
+                "Marca": "Scania",
+                "Cor": "Preto",
+                "Placa": "ABC-1236",
+                "Texto": "Avistei um buracão aqui perto em cuidado pessoal....",
+                "CorFundo": "amarelo",
+                "Data": "à 6 minutos atrás",
+                "CaminhoneiroId": "7",
+                "NomeCaminhoneiro": "Jonathan Rodrigues"
+
+
+            },
+            {
+                "Marca": "Mercedes",
+                "Cor": "Branco",
+                "Placa": "ABC-1235",
+                "Texto": "a pista está muito esburacada no meu trecho",
+                "CorFundo": "verde",
+                "Data": "à 7 minutos atrás",
+                "CaminhoneiroId": "6",
+                "NomeCaminhoneiro": "José Algusto"
+
+
+            },
+            {
+                "Marca": "Scania",
+                "Cor": "Laranja",
+                "Placa": "ABC-1234",
+                "Texto": "não compensa comprar do posto Roxinho aqui... ta muito caro....",
+                "CorFundo": "amarelo",
+                "Data": "à 12 minutos atrás",
+                "CaminhoneiroId": "5",
+                "NomeCaminhoneiro": "Alex André"
+
+            },
+            {
+                "Marca": "Mercedes",
+                "Cor": "Branco",
+                "Placa": "ABC-1235",
+                "Texto": "Gasolina barata aqui no posto do kilometro 25 em galera!!",
+                "CorFundo": "verde",
+                "Data": "à 15 minutos atrás",
+                "CaminhoneiroId": "6",
+                "NomeCaminhoneiro": "José Algusto"
+
+            },
+
+            {
+                "Marca": "Scania",
+                "Cor": "Laranja",
+                "Placa": "ABC-4567",
+                "Texto": "Acabei de ver um grupo de indivíduos portando fuzil e rendendo um companheiro aqui do meu lado",
+                "CorFundo": "vermelho",
+                "Data": "à 20 minutos atrás",
+                "CaminhoneiroId": "10",
+                "NomeCaminhoneiro": "Alessandro Tavares"
+            },
+            {
+                "Marca": "Scania",
+                "Cor": "Preto",
+                "Placa": "ABC-1239",
+                "Texto": "FUI ROUBADO, LEVARAM MEU CAMINHÃO E A CARGA.. SOCORRO!!!",
+                "CorFundo": "vermelho",
+                "Data": "à 25 minutos atrás",
+                "CaminhoneiroId": "9",
+                "NomeCaminhoneiro": "Vitor Bonneti"
+            },
+            {
+                "Marca": "Scania",
+                "Cor": "Preto",
+                "Placa": "ABC-1237",
+                "Texto": "Estou parado no kilometro 48 já faz meia hora!",
+                "CorFundo": "vermelho",
+                "Data": "à 10 minutos atrás",
+                "CaminhoneiroId": "8",
+                "NomeCaminhoneiro": "Raimundo Neves"
+            },
+            {
+                "Marca": "Scania",
+                "Cor": "Preto",
+                "Placa": "ABC-1232",
+                "Texto": "acabei de ver um acidente aqui do meu lado, parece que todos estão bem",
+                "CorFundo": "laranja",
+                "Data": "à 10 minutos atrás",
+                "CaminhoneiroId": "3",
+                "NomeCaminhoneiro": "Lucas Simões"
+            },
+            {
+                "Marca": "Scania",
+                "Cor": "Azul",
+                "Placa": "ABC-1235",
+                "Texto": "Houve uma batida no kilometro 25",
+                "CorFundo": "amarelo",
+                "Data": "à 15 minutos atrás",
+                "CaminhoneiroId": "6",
+                "NomeCaminhoneiro": "José Algusto"
+            },
+            {
+                "Marca": "Mercedes",
+                "Cor": "Branco",
+                "Placa": "ABC-1239",
+                "Texto": "uma carga de areia caiu na pista aqui na frente e tem um congestionamento na via",
+                "CorFundo": "vermelho",
+                "Data": "à 15 minutos atrás",
+                "CaminhoneiroId": "9",
+                "NomeCaminhoneiro": "Vitor Bonneti"
+            }
+
+        ]
+
+    return tdsMsgs;
+}

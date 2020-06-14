@@ -5,169 +5,169 @@
 
 
 
-    <div class="container-fluid">
-        <div class="row mt-4 mr-5 ml-5 mb-2 p-3 bg-light rounded">
-            <div class="col-12">
-                <h2 class="titulo">Mapa Geral</h2>
-                <hr>
-                <div id="mapa-todos-caminhoes"></div>
-            </div>
+<div class="container-fluid">
+    <div class="row mt-4 mr-5 ml-5 mb-2 p-3 bg-light rounded">
+        <div class="col-12">
+            <h2 class="titulo">Mapa Geral</h2>
+            <hr>
+            <div id="mapa-todos-caminhoes"></div>
         </div>
+    </div>
 
-        <div class="row mt-4 mr-5 ml-5 mb-2 p-3 bg-light rounded">
-            <div class="col-12">
-                <div class="row">
-                    <div class="col-3">
-                        <h2 class="titulo">Notificações</h2>
-                        <hr>
-                        <div class="list-group" id="list-tab" role="tablist">
-                            <a class="titulo-menu list-group-item list-group-item-action active" id="list-acidentes-list"
-                               data-toggle="list" href="#list-acidentes" role="tab"
-                               aria-controls="acidentes">#Acidentes</a>
-                            <a class="titulo-menu list-group-item list-group-item-action" id="list-bloqueios-list" data-toggle="list" href="#list-bloqueios" role="tab" aria-controls="bloqueios">#Bloqueios</a>
+    <div class="row mt-4 mr-5 ml-5 mb-2 p-3 bg-light rounded">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-3">
+                    <h2 class="titulo">Notificações</h2>
+                    <hr>
+                    <div class="list-group" id="list-tab" role="tablist">
+                        <a class="titulo-menu list-group-item list-group-item-action active" id="list-acidentes-list"
+                           data-toggle="list" href="#list-acidentes" role="tab"
+                           aria-controls="acidentes">#Acidentes</a>
+                        <a class="titulo-menu list-group-item list-group-item-action" id="list-bloqueios-list" data-toggle="list" href="#list-bloqueios" role="tab" aria-controls="bloqueios">#Bloqueios</a>
 
-                            <a class="titulo-menu list-group-item list-group-item-action" id="list-roubos-list" data-toggle="list" href="#list-roubos" role="tab" aria-controls="roubos">#Roubos</a>
+                        <a class="titulo-menu list-group-item list-group-item-action" id="list-roubos-list" data-toggle="list" href="#list-roubos" role="tab" aria-controls="roubos">#Roubos</a>
 
-                            <a class="titulo-menu list-group-item list-group-item-action" id="list-precos-list" data-toggle="list"
-                               href="#list-precos" role="tab" aria-controls="precos">#Precos</a>
-                            <a class="titulo-menu list-group-item list-group-item-action" id="list-buracoNaVia-list"
-                               data-toggle="list" href="#list-buracoNaVia" role="tab"
-                               aria-controls="buracoNaVia">#BuracoNaVia</a>
-                            <a class="titulo-menu list-group-item list-group-item-action" id="list-bemEstar-list" data-toggle="list"
-                               href="#list-bemEstar" role="tab" aria-controls="buracoNaVia">#BemEstar</a>
-                            <a class="titulo-menu list-group-item list-group-item-action" id="list-caminhaoQuebrou-list"
-                               data-toggle="list" href="#list-caminhaoQuebrou" role="tab"
-                               aria-controls="buracoNaVia">#CaminhãoQuebrou</a>
-                        </div>
+                        <a class="titulo-menu list-group-item list-group-item-action" id="list-precos-list" data-toggle="list"
+                           href="#list-precos" role="tab" aria-controls="precos">#Precos</a>
+                        <a class="titulo-menu list-group-item list-group-item-action" id="list-buracoNaVia-list"
+                           data-toggle="list" href="#list-buracoNaVia" role="tab"
+                           aria-controls="buracoNaVia">#BuracoNaVia</a>
+                        <a class="titulo-menu list-group-item list-group-item-action" id="list-bemEstar-list" data-toggle="list"
+                           href="#list-bemEstar" role="tab" aria-controls="buracoNaVia">#BemEstar</a>
+                        <a class="titulo-menu list-group-item list-group-item-action" id="list-caminhaoQuebrou-list"
+                           data-toggle="list" href="#list-caminhaoQuebrou" role="tab"
+                           aria-controls="buracoNaVia">#CaminhãoQuebrou</a>
                     </div>
+                </div>
 
-                    <div class="col-9">
-                        <h2 class="titulo">Buscar Usuário</h2>
-                        <hr>
+                <div class="col-9">
+                    <h2 class="titulo">Buscar Usuário</h2>
+                    <hr>
 
-                        <div class="w-100">
-                            <input type="text" class="form-control w-75 float-left" placeholder="Digite Sua Busca Aqui" />
-                            <select class="form-control w-25 float-left">
-                                <option value="nome">Nome</option>
-                                <option value="placa">Placa</option>
-                                <option value="rodovia">Rodovia</option>
-                            </select>
-
-
-                            <div class="col-6 float-left mt-3">
-                                <figure class="highcharts-figure">
-                                    <div id="grafico-qtd-notificacoes-dia"></div>
-                                </figure>
-
-                                <figure class="highcharts-figure mt-2">
-                                    <div id="grafico-lugares"></div>
-                                </figure>
-                            </div>
-
-                            <div class="col-6 tab-content float-right" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="list-acidentes" role="tabpanel" aria-labelledby="list-acidentes-list">
-                                    <h2 class="titulo mt-4">Avisos de Acidentes</h2>
-                                    <hr>
-                                    <div id="div-chat-avisos-acidente" class="chat-avisos">
-                                        <div id="chat-avisos-acidente">
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="list-bloqueios" role="tabpanel" aria-labelledby="list-bloqueios-list">
-                                    <h2 class="titulo mt-4">Avisos de Bloqueios</h2>
-                                    <hr>
-                                    <div id="div-chat-avisos-bloqueios" class="chat-avisos">
-                                        <div id="chat-avisos-bloqueios">
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="list-roubos" role="tabpanel" aria-labelledby="list-roubos-list">
-                                    <h2 class="titulo mt-4">Avisos de Roubos</h2>
-                                    <hr>
-                                    <div id="div-chat-avisos-roubos" class="chat-avisos">
-                                        <div id="chat-avisos-roubos">
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="tab-pane fade" id="list-precos" role="tabpanel" aria-labelledby="list-precos-list">
-                                    <h2 class="titulo mt-4">Avisos de Preços</h2>
-                                    <hr>
-                                    <div id="div-chat-avisos-precos" class="chat-avisos">
-                                        <div id="chat-avisos-precos">
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="tab-pane fade" id="list-buracoNaVia" role="tabpanel" aria-labelledby="list-buracoNaVia-list">
-                                    <h2 class="titulo mt-4">Avisos de Buracos Na Via</h2>
-                                    <hr>
-                                    <div id="div-chat-avisos-buracoNaVia" class="chat-avisos">
-                                        <div id="chat-avisos-buracoNaVia">
-
-                                        </div>
-                                    </div>
-
-                                </div>
+                    <div class="w-100">
+                        <input type="text" class="form-control w-75 float-left" placeholder="Digite Sua Busca Aqui" />
+                        <select class="form-control w-25 float-left">
+                            <option value="nome">Nome</option>
+                            <option value="placa">Placa</option>
+                            <option value="rodovia">Rodovia</option>
+                        </select>
 
 
-                                <div class="tab-pane fade" id="list-bemEstar" role="tabpanel" aria-labelledby="list-bemEstar-list">
-                                    <h2 class="titulo mt-4">Avisos de Bem Estar</h2>
-                                    <hr>
-                                    <div id="div-chat-avisos-bemEstar" class="chat-avisos">
-                                        <div id="chat-avisos-bemEstar">
+                        <div class="col-6 float-left mt-3">
+                            <figure class="highcharts-figure">
+                                <div id="grafico-qtd-notificacoes-dia"></div>
+                            </figure>
 
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="tab-pane fade" id="list-caminhaoQuebrou" role="tabpanel" aria-labelledby="list-caminhaoQuebrou-list">
-                                    <h2 class="titulo mt-4">Avisos de Quebra de Veículos</h2>
-                                    <hr>
-                                    <div id="div-chat-avisos-caminhaoQuebrou" class="chat-avisos">
-                                        <div id="chat-avisos-caminhaoQuebrou">
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-
-
-
-
-                            </div>
+                            <figure class="highcharts-figure mt-2">
+                                <div id="grafico-lugares"></div>
+                            </figure>
                         </div>
 
+                        <div class="col-6 tab-content float-right" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="list-acidentes" role="tabpanel" aria-labelledby="list-acidentes-list">
+                                <h2 class="titulo mt-4">Avisos de Acidentes</h2>
+                                <hr>
+                                <div id="div-chat-avisos-acidente" class="chat-avisos">
+                                    <div id="chat-avisos-acidente">
 
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="list-bloqueios" role="tabpanel" aria-labelledby="list-bloqueios-list">
+                                <h2 class="titulo mt-4">Avisos de Bloqueios</h2>
+                                <hr>
+                                <div id="div-chat-avisos-bloqueios" class="chat-avisos">
+                                    <div id="chat-avisos-bloqueios">
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade" id="list-roubos" role="tabpanel" aria-labelledby="list-roubos-list">
+                                <h2 class="titulo mt-4">Avisos de Roubos</h2>
+                                <hr>
+                                <div id="div-chat-avisos-roubos" class="chat-avisos">
+                                    <div id="chat-avisos-roubos">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="list-precos" role="tabpanel" aria-labelledby="list-precos-list">
+                                <h2 class="titulo mt-4">Avisos de Preços</h2>
+                                <hr>
+                                <div id="div-chat-avisos-precos" class="chat-avisos">
+                                    <div id="chat-avisos-precos">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="list-buracoNaVia" role="tabpanel" aria-labelledby="list-buracoNaVia-list">
+                                <h2 class="titulo mt-4">Avisos de Buracos Na Via</h2>
+                                <hr>
+                                <div id="div-chat-avisos-buracoNaVia" class="chat-avisos">
+                                    <div id="chat-avisos-buracoNaVia">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="tab-pane fade" id="list-bemEstar" role="tabpanel" aria-labelledby="list-bemEstar-list">
+                                <h2 class="titulo mt-4">Avisos de Bem Estar</h2>
+                                <hr>
+                                <div id="div-chat-avisos-bemEstar" class="chat-avisos">
+                                    <div id="chat-avisos-bemEstar">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="list-caminhaoQuebrou" role="tabpanel" aria-labelledby="list-caminhaoQuebrou-list">
+                                <h2 class="titulo mt-4">Avisos de Quebra de Veículos</h2>
+                                <hr>
+                                <div id="div-chat-avisos-caminhaoQuebrou" class="chat-avisos">
+                                    <div id="chat-avisos-caminhaoQuebrou">
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
                     </div>
 
 
                 </div>
 
+
             </div>
 
         </div>
+
     </div>
+</div>
 
 
 
 
 
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_DA_API_DO_GOOGLE_MAPS_AQUI=initMap" defer></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=chavedogoogleaqui&callback=initMap" defer></script>
 
 
 
@@ -179,163 +179,162 @@
 
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-            crossorigin="anonymous"></script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
-    <script src="~/js/funcoes.js"></script>
+<script src="~/js/funcoes.js"></script>
 
-    <script>
-            $(document).ready(function(){
+<script>
+    $(document).ready(function () {
 
-                /* VARIAVEIS GLOBAIS */
-                var mapaTodosCaminhoes = $('#mapa-todos-caminhoes');
-                var markers = [];
-                var markersAnteriores;
-                var centro;
-                var zoom;
-                var markerCluster;
-                var caminhoes = [];
+        /* VARIAVEIS GLOBAIS */
+        var mapaTodosCaminhoes = $('#mapa-todos-caminhoes');
+        var markers = [];
+        var markersAnteriores;
+        var centro;
+        var zoom;
+        var markerCluster;
+        var caminhoes = [];
 
-                /* funçoes */
-                function initMapaTodosCaminhoes() {
-                    centro = { lat: -23.603511, lng: -46.680199 };
-                    mapaTodosCaminhoes = new google.maps.Map(document.getElementById('mapa-todos-caminhoes'), {
-                        zoom: 14,
-                        center: centro,
-                        styles: [
-                            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
-                            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
-                            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
-                            {
-                            featureType: 'administrative.locality',
-                            elementType: 'labels.text.fill',
-                            stylers: [{color: '#d59563'}]
-                            },
-                            {
-                            featureType: 'poi',
-                            elementType: 'labels.text.fill',
-                            stylers: [{color: '#d59563'}]
-                            },
-                            {
-                            featureType: 'poi.park',
-                            elementType: 'geometry',
-                            stylers: [{color: '#263c3f'}]
-                            },
-                            {
-                            featureType: 'poi.park',
-                            elementType: 'labels.text.fill',
-                            stylers: [{color: '#6b9a76'}]
-                            },
-                            {
-                            featureType: 'road',
-                            elementType: 'geometry',
-                            stylers: [{color: '#38414e'}]
-                            },
-                            {
-                            featureType: 'road',
-                            elementType: 'geometry.stroke',
-                            stylers: [{color: '#212a37'}]
-                            },
-                            {
-                            featureType: 'road',
-                            elementType: 'labels.text.fill',
-                            stylers: [{color: '#9ca5b3'}]
-                            },
-                            {
-                            featureType: 'road.highway',
-                            elementType: 'geometry',
-                            stylers: [{color: '#746855'}]
-                            },
-                            {
-                            featureType: 'road.highway',
-                            elementType: 'geometry.stroke',
-                            stylers: [{color: '#1f2835'}]
-                            },
-                            {
-                            featureType: 'road.highway',
-                            elementType: 'labels.text.fill',
-                            stylers: [{color: '#f3d19c'}]
-                            },
-                            {
-                            featureType: 'transit',
-                            elementType: 'geometry',
-                            stylers: [{color: '#2f3948'}]
-                            },
-                            {
-                            featureType: 'transit.station',
-                            elementType: 'labels.text.fill',
-                            stylers: [{color: '#d59563'}]
-                            },
-                            {
-                            featureType: 'water',
-                            elementType: 'geometry',
-                            stylers: [{color: '#17263c'}]
-                            },
-                            {
-                            featureType: 'water',
-                            elementType: 'labels.text.fill',
-                            stylers: [{color: '#515c6d'}]
-                            },
-                            {
-                            featureType: 'water',
-                            elementType: 'labels.text.stroke',
-                            stylers: [{color: '#17263c'}]
-                            }
-                        ]
-                    });
-                }
-
-
-                /* FUNCÃO DE DESENHAR OBJETOS NO MAPA */
-                function DesenhaMarkersNoMapa(map, markersAnteriores) {
-                    if (markersAnteriores != null) {
-                        for (var i = 0; i < markersAnteriores.length; i++) {
-                            markersAnteriores[i].setMap(null);
-                        }
-                    }
-                    else
+        /* funçoes */
+        function initMapaTodosCaminhoes() {
+            centro = { lat: -23.603511, lng: -46.680199 };
+            mapaTodosCaminhoes = new google.maps.Map(document.getElementById('mapa-todos-caminhoes'), {
+                zoom: 14,
+                center: centro,
+                styles: [
+                    { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+                    { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+                    { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
                     {
-                        for (var i = 0; i < markers.length; i++) {
-                            markers[i].setMap(map);
-                        }
+                        featureType: 'administrative.locality',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#d59563' }]
+                    },
+                    {
+                        featureType: 'poi',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#d59563' }]
+                    },
+                    {
+                        featureType: 'poi.park',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#263c3f' }]
+                    },
+                    {
+                        featureType: 'poi.park',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#6b9a76' }]
+                    },
+                    {
+                        featureType: 'road',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#38414e' }]
+                    },
+                    {
+                        featureType: 'road',
+                        elementType: 'geometry.stroke',
+                        stylers: [{ color: '#212a37' }]
+                    },
+                    {
+                        featureType: 'road',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#9ca5b3' }]
+                    },
+                    {
+                        featureType: 'road.highway',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#746855' }]
+                    },
+                    {
+                        featureType: 'road.highway',
+                        elementType: 'geometry.stroke',
+                        stylers: [{ color: '#1f2835' }]
+                    },
+                    {
+                        featureType: 'road.highway',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#f3d19c' }]
+                    },
+                    {
+                        featureType: 'transit',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#2f3948' }]
+                    },
+                    {
+                        featureType: 'transit.station',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#d59563' }]
+                    },
+                    {
+                        featureType: 'water',
+                        elementType: 'geometry',
+                        stylers: [{ color: '#17263c' }]
+                    },
+                    {
+                        featureType: 'water',
+                        elementType: 'labels.text.fill',
+                        stylers: [{ color: '#515c6d' }]
+                    },
+                    {
+                        featureType: 'water',
+                        elementType: 'labels.text.stroke',
+                        stylers: [{ color: '#17263c' }]
                     }
+                ]
+            });
+        }
+
+
+        /* FUNCÃO DE DESENHAR OBJETOS NO MAPA */
+        function DesenhaMarkersNoMapa(map, markersAnteriores) {
+            if (markersAnteriores != null) {
+                for (var i = 0; i < markersAnteriores.length; i++) {
+                    markersAnteriores[i].setMap(null);
+                }
+            }
+            else {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+        }
+
+        // Remove os markers do mapa, mas mantém no array.
+        function LimpaMarkers(markersAnteriores) {
+            DesenhaMarkersNoMapa(null, markersAnteriores);
+        }
+
+        // Deleta todos os markers no array retirando a referencia a eles.
+        function DeletaMarkers() {
+            LimpaMarkers(markersAnteriores);
+            markers = [];
+        }
+
+        /* DESENHOS */
+        function CriaRadaresNoMapa(caminhoneiros, map) {
+
+            for (i = 0; i < caminhoneiros.length; i++) {
+
+                var latLog = { lat: caminhoneiros[i].Lat, lng: caminhoneiros[i].Lon };
+
+                var iconRadar = {
+                    url: "../../imgs/icons/caminhao-icon.png",
+                    scaledSize: new google.maps.Size(100, 55)
                 }
 
-                // Remove os markers do mapa, mas mantém no array.
-                function LimpaMarkers(markersAnteriores) {
-                    DesenhaMarkersNoMapa(null, markersAnteriores);
-                }
-
-                // Deleta todos os markers no array retirando a referencia a eles.
-                function DeletaMarkers() {
-                    LimpaMarkers(markersAnteriores);
-                    markers = [];
-                }
-
-                /* DESENHOS */
-                function CriaRadaresNoMapa(caminhoneiros, map) {
-
-                    for (i = 0; i < caminhoneiros.length; i++) {
-
-                        var latLog = { lat: caminhoneiros[i].Lat, lng: caminhoneiros[i].Lon };
-
-                        var iconRadar = {
-                            url: "../../imgs/icons/caminhao-icon.png",
-                            scaledSize: new google.maps.Size(100, 55)
-                        }
-
-                        var contentString =
-                            `<div id="content">
+                var contentString =
+                    `<div id="content">
                                 <div id="siteNotice">
                                 <h1 id="firstHeading" class="firstHeading">${caminhoneiros[i].Placa}</h1>
                                 <hr>
@@ -347,162 +346,160 @@
                             </div>
                             `;
 
-                        var infoWindow = new google.maps.InfoWindow({
-                            content: contentString
-                        });
+                var infoWindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
 
-                        var marker = new google.maps.Marker({
-                            position: latLog,
-                            map: map,
-                            icon: iconRadar,
-                        });
+                var marker = new google.maps.Marker({
+                    position: latLog,
+                    map: map,
+                    icon: iconRadar,
+                });
 
-                        google.maps.event.addListener(marker, 'mouseover', (function (marker, contentString, infoWindow) {
-                            return function () {
-                                infoWindow.setContent(contentString);
-                                infoWindow.open(map, marker);
-                            };
-                        })(marker, contentString, infoWindow));
+                google.maps.event.addListener(marker, 'mouseover', (function (marker, contentString, infoWindow) {
+                    return function () {
+                        infoWindow.setContent(contentString);
+                        infoWindow.open(map, marker);
+                    };
+                })(marker, contentString, infoWindow));
 
-                        google.maps.event.addListener(marker, 'mouseout', (function (marker, contentString, infoWindow) {
-                            return function () {
-                                infoWindow.setContent(contentString);
-                                infoWindow.close();
-                            };
-                        })(marker, contentString, infoWindow));
+                google.maps.event.addListener(marker, 'mouseout', (function (marker, contentString, infoWindow) {
+                    return function () {
+                        infoWindow.setContent(contentString);
+                        infoWindow.close();
+                    };
+                })(marker, contentString, infoWindow));
 
-                        markers.push(marker);
+                markers.push(marker);
 
+            }
+
+            markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+        }
+
+
+
+        function CriaGraficosAleatorio() {
+            var valores = []
+
+            for (var i = 0; i < 10; i++) {
+                var nr = Math.ceil(Math.random(1, 100) * 10);
+                valores.push(nr);
+            }
+
+
+            /* Cria Grafico Baseado na aleatoriedade */
+            Highcharts.chart('grafico-lugares', {
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false,
+                    type: 'pie'
+                },
+                title: {
+                    text: 'Locais que mais ocorrem'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                accessibility: {
+                    point: {
+                        valueSuffix: '%'
                     }
-
-                    markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-
-                }
-
-
-
-                function CriaGraficosAleatorio()
-                {
-                    var valores = []
-
-                    for(var i = 0; i < 10; i++)
-                    {
-                        var nr = Math.ceil(Math.random( 1, 100) * 10);
-                        valores.push(nr);
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: false
+                        },
+                        showInLegend: true
                     }
-
-
-                    /* Cria Grafico Baseado na aleatoriedade */
-                    Highcharts.chart('grafico-lugares', {
-                        chart: {
-                            plotBackgroundColor: null,
-                            plotBorderWidth: null,
-                            plotShadow: false,
-                            type: 'pie'
+                },
+                series: [{
+                    name: 'Lugares',
+                    colorByPoint: true,
+                    data: [
+                        {
+                            name: 'Av. Bandeirantes',
+                            y: valores[6],
+                            sliced: true,
+                            selected: true
                         },
-                        title: {
-                            text: 'Locais que mais ocorrem'
-                        },
-                        tooltip: {
-                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                        },
-                        accessibility: {
-                            point: {
-                                valueSuffix: '%'
-                            }
-                        },
-                        plotOptions: {
-                            pie: {
-                                allowPointSelect: true,
-                                cursor: 'pointer',
-                                dataLabels: {
-                                    enabled: false
-                                },
-                                showInLegend: true
-                            }
-                        },
-                        series: [{
-                            name: 'Lugares',
-                            colorByPoint: true,
-                            data: [
-                                {
-                                name: 'Av. Bandeirantes',
-                                y: valores[6],
-                                sliced: true,
-                                selected: true
-                            },
-                            {
-                                name: 'Rodoanel Mário Covas',
-                                y: valores[1]
-                            }, {
-                                name: 'Rodovia José Augusto Freire',
-                                y: valores[4]
-                            }, {
-                                name: 'Rodovia Padre Manuel da Nóbrega',
-                                y: valores[2]
-                            }, {
-                                name: 'Rodovia Presidente Dutra',
-                                y: valores[9]
-                            }, {
-                                name: 'Rodovia D. Pedro I',
-                                y: valores[0]
-                            }]
+                        {
+                            name: 'Rodoanel Mário Covas',
+                            y: valores[1]
+                        }, {
+                            name: 'Rodovia José Augusto Freire',
+                            y: valores[4]
+                        }, {
+                            name: 'Rodovia Padre Manuel da Nóbrega',
+                            y: valores[2]
+                        }, {
+                            name: 'Rodovia Presidente Dutra',
+                            y: valores[9]
+                        }, {
+                            name: 'Rodovia D. Pedro I',
+                            y: valores[0]
                         }]
-                    });
+                }]
+            });
 
 
-                    Highcharts.chart('grafico-qtd-notificacoes-dia', {
-                        chart: {
-                            type: 'line'
+            Highcharts.chart('grafico-qtd-notificacoes-dia', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Notificações desse tipo diárias'
+                },
+                xAxis: {
+                    categories: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Quantidade'
+                    }
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: false
                         },
-                        title: {
-                            text: 'Notificações desse tipo diárias'
-                        },
-                        xAxis: {
-                            categories: ['Domingo','Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado']
-                        },
-                        yAxis: {
-                            title: {
-                                text: 'Quantidade'
-                            }
-                        },
-                        plotOptions: {
-                            line: {
-                                dataLabels: {
-                                    enabled: false
-                                },
-                                enableMouseTracking: true
-                            }
-                        },
-                        series: [{
-                            name: 'Notificações',
-                            data: [valores[0], valores[1], valores[2], valores[3], valores[4], valores[5], valores[6]],
-                            color: '#09b0ed'
-                        }]
-                    });
+                        enableMouseTracking: true
+                    }
+                },
+                series: [{
+                    name: 'Notificações',
+                    data: [valores[0], valores[1], valores[2], valores[3], valores[4], valores[5], valores[6]],
+                    color: '#09b0ed'
+                }]
+            });
 
-                }
+        }
 
 
 
 
 
-                $('#list-acidentes-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-acidente')
-                    var chat = document.getElementById('chat-avisos-acidente')
-                    chat.remove();
-                    div.innerHTML =
-                    `
+        $('#list-acidentes-list').click(function () {
+            var div = document.getElementById('div-chat-avisos-acidente')
+            var chat = document.getElementById('chat-avisos-acidente')
+            chat.remove();
+            div.innerHTML =
+                `
                        <div id="chat-avisos-acidente"></div>
                     `;
-                    chat = document.getElementById('chat-avisos-acidente')
+            chat = document.getElementById('chat-avisos-acidente')
 
-                    var cards = GetCardsAcidentesAviso();
+            var cards = GetCardsAcidentesAviso();
 
-                    cards.forEach(card => {
+            cards.forEach(card => {
 
-                        var conteudo =
-                        `
+                var conteudo =
+                    `
                         <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
                                           <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
@@ -522,27 +519,27 @@
                                         </a>
                         `;
 
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
+                div.innerHTML += conteudo;
+            });
+            CriaGraficosAleatorio();
+        });
 
-                $('#list-bloqueios-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-bloqueios')
-                    var chat = document.getElementById('chat-avisos-bloqueios')
-                    chat.remove();
-                    div.innerHTML =
-                    `
+        $('#list-bloqueios-list').click(function () {
+            var div = document.getElementById('div-chat-avisos-bloqueios')
+            var chat = document.getElementById('chat-avisos-bloqueios')
+            chat.remove();
+            div.innerHTML =
+                `
                        <div id="chat-avisos-bloqueios"></div>
                     `;
-                    chat = document.getElementById('chat-avisos-bloqueios')
+            chat = document.getElementById('chat-avisos-bloqueios')
 
-                    var cards = GetCardsBloqueiosAviso();
+            var cards = GetCardsBloqueiosAviso();
 
-                    cards.forEach(card => {
+            cards.forEach(card => {
 
-                        var conteudo =
-                        `
+                var conteudo =
+                    `
                         <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
                                           <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
@@ -562,28 +559,28 @@
                                         </a>
                         `;
 
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
+                div.innerHTML += conteudo;
+            });
+            CriaGraficosAleatorio();
+        });
 
 
-                $('#list-roubos-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-roubos')
-                    var chat = document.getElementById('chat-avisos-roubos')
-                    chat.remove();
-                    div.innerHTML =
-                    `
+        $('#list-roubos-list').click(function () {
+            var div = document.getElementById('div-chat-avisos-roubos')
+            var chat = document.getElementById('chat-avisos-roubos')
+            chat.remove();
+            div.innerHTML =
+                `
                        <div id="chat-avisos-roubos"></div>
                     `;
-                    chat = document.getElementById('chat-avisos-roubos')
+            chat = document.getElementById('chat-avisos-roubos')
 
-                    var cards = GetCardsRoubosAviso();
+            var cards = GetCardsRoubosAviso();
 
-                    cards.forEach(card => {
+            cards.forEach(card => {
 
-                        var conteudo =
-                        `
+                var conteudo =
+                    `
                         <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
                                           <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
@@ -603,29 +600,29 @@
                                         </a>
                         `;
 
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
+                div.innerHTML += conteudo;
+            });
+            CriaGraficosAleatorio();
+        });
 
 
 
-                $('#list-precos-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-precos')
-                    var chat = document.getElementById('chat-avisos-precos')
-                    chat.remove();
-                    div.innerHTML =
-                    `
+        $('#list-precos-list').click(function () {
+            var div = document.getElementById('div-chat-avisos-precos')
+            var chat = document.getElementById('chat-avisos-precos')
+            chat.remove();
+            div.innerHTML =
+                `
                        <div id="chat-avisos-precos"></div>
                     `;
-                    chat = document.getElementById('chat-avisos-precos')
+            chat = document.getElementById('chat-avisos-precos')
 
-                    var cards = GetCardsPrecosAviso();
+            var cards = GetCardsPrecosAviso();
 
-                    cards.forEach(card => {
+            cards.forEach(card => {
 
-                        var conteudo =
-                        `
+                var conteudo =
+                    `
                         <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
                                          <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
@@ -645,28 +642,28 @@
                                         </a>
                         `;
 
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
+                div.innerHTML += conteudo;
+            });
+            CriaGraficosAleatorio();
+        });
 
 
-                $('#list-buracoNaVia-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-buracoNaVia')
-                    var chat = document.getElementById('chat-avisos-buracoNaVia')
-                    chat.remove();
-                    div.innerHTML =
-                    `
+        $('#list-buracoNaVia-list').click(function () {
+            var div = document.getElementById('div-chat-avisos-buracoNaVia')
+            var chat = document.getElementById('chat-avisos-buracoNaVia')
+            chat.remove();
+            div.innerHTML =
+                `
                        <div id="chat-avisos-buracoNaVia"></div>
                     `;
-                    chat = document.getElementById('chat-avisos-buracoNaVia')
+            chat = document.getElementById('chat-avisos-buracoNaVia')
 
-                    var cards = GetCardsBuracoNaViaAviso();
+            var cards = GetCardsBuracoNaViaAviso();
 
-                    cards.forEach(card => {
+            cards.forEach(card => {
 
-                        var conteudo =
-                        `
+                var conteudo =
+                    `
                         <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
                                           <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
@@ -686,29 +683,29 @@
                                         </a>
                         `;
 
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
+                div.innerHTML += conteudo;
+            });
+            CriaGraficosAleatorio();
+        });
 
 
 
-                $('#list-bemEstar-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-bemEstar')
-                    var chat = document.getElementById('chat-avisos-bemEstar')
-                    chat.remove();
-                    div.innerHTML =
-                    `
+        $('#list-bemEstar-list').click(function () {
+            var div = document.getElementById('div-chat-avisos-bemEstar')
+            var chat = document.getElementById('chat-avisos-bemEstar')
+            chat.remove();
+            div.innerHTML =
+                `
                        <div id="chat-avisos-bemEstar"></div>
                     `;
-                    chat = document.getElementById('chat-avisos-bemEstar')
+            chat = document.getElementById('chat-avisos-bemEstar')
 
-                    var cards = GetCardsBemEstarAviso();
+            var cards = GetCardsBemEstarAviso();
 
-                    cards.forEach(card => {
+            cards.forEach(card => {
 
-                        var conteudo =
-                        `
+                var conteudo =
+                    `
                         <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
                                           <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
@@ -728,28 +725,28 @@
                                         </a>
                         `;
 
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
+                div.innerHTML += conteudo;
+            });
+            CriaGraficosAleatorio();
+        });
 
 
-                $('#list-caminhaoQuebrou-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-caminhaoQuebrou')
-                    var chat = document.getElementById('chat-avisos-caminhaoQuebrou')
-                    chat.remove();
-                    div.innerHTML =
-                    `
+        $('#list-caminhaoQuebrou-list').click(function () {
+            var div = document.getElementById('div-chat-avisos-caminhaoQuebrou')
+            var chat = document.getElementById('chat-avisos-caminhaoQuebrou')
+            chat.remove();
+            div.innerHTML =
+                `
                        <div id="chat-avisos-caminhaoQuebrou"></div>
                     `;
-                    chat = document.getElementById('chat-avisos-caminhaoQuebrou')
+            chat = document.getElementById('chat-avisos-caminhaoQuebrou')
 
-                    var cards = GetCardsCaminhaoQuebrouAviso();
+            var cards = GetCardsCaminhaoQuebrouAviso();
 
-                    cards.forEach(card => {
+            cards.forEach(card => {
 
-                        var conteudo =
-                        `
+                var conteudo =
+                    `
                         <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
                                           <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
@@ -769,25 +766,25 @@
                                         </a>
                         `;
 
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
-
-
-
-
-                /* CHAMANDO FUNÇÕES*/
-                initMapaTodosCaminhoes();
-                $('#list-acidentes-list').click();
-                var caminhoneiros = GetCaminhoneiros();
-                CriaRadaresNoMapa(caminhoneiros, mapaTodosCaminhoes);
-
-
+                div.innerHTML += conteudo;
             });
+            CriaGraficosAleatorio();
+        });
+
+
+
+
+        /* CHAMANDO FUNÇÕES*/
+        initMapaTodosCaminhoes();
+        $('#list-acidentes-list').click();
+        var caminhoneiros = GetCaminhoneiros();
+        CriaRadaresNoMapa(caminhoneiros, mapaTodosCaminhoes);
+
+
+    });
 
 
 
 
 
-    </script>
+</script>

@@ -22,11 +22,9 @@
             <h2 class="titulo">Mensagens</h2>
             <hr>
             <div class="w-100">
-                <div class="tab-pane fade" id="list-bloqueios" role="tabpanel" aria-labelledby="list-bloqueios-list">
-                    <div id="div-chat-avisos-msgs" class="chat-avisos">
-                        <div id="chat-avisos-msgs">
+                <div id="div-chat-avisos-msgs" class="chat-avisos">
+                    <div id="div-mensagens">
 
-                        </div>
                     </div>
                 </div>
             </div>
@@ -35,18 +33,30 @@
         <div class="col-4">
             <h2 class="titulo">Status</h2>
             <hr>
-            <div class="w-100">
+            <div class="w-100" id="div-status">
 
 
             </div>
         </div>
+    </div>
 
 
-
-
-
+    <div class="row mt-4 mr-5 ml-5 mb-2 p-3 bg-light rounded">
+        <div class="col-8">
+            <div id="mapa-todos-caminhoes"></div>
+        </div>
+        <div class="col-4">
+            <figure class="highcharts-figure">
+                <div id="grafico-qtd-notificacoes-dia"></div>
+            </figure>
+        </div>
 
     </div>
+
+
+
+
+
 </div>
 
 
@@ -56,7 +66,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_DA_API_DO_GOOGLE_MAPS_AQUI=initMap" defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=CHAVEDOGOOGLEAQUI&callback=initMap" defer></script>
 
 
 
@@ -79,7 +89,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
 <script src="~/js/funcoes.js"></script>
 
@@ -87,7 +96,7 @@
             $(document).ready(function(){
 
                 /* VARIAVEIS GLOBAIS */
-                var mapaTodosCaminhoes = $('#mapa-todos-caminhoes');
+                var mapaTodosCaminhoes = document.getElementById('mapa-todos-caminhoes');
                 var markers = [];
                 var markersAnteriores;
                 var centro;
@@ -216,11 +225,10 @@
                 }
 
                 /* DESENHOS */
-                function CriaRadaresNoMapa(caminhoneiros, map) {
+                function CriaRadaresNoMapa(caminhoneiro, map) {
 
-                    for (i = 0; i < caminhoneiros.length; i++) {
 
-                        var latLog = { lat: caminhoneiros[i].Lat, lng: caminhoneiros[i].Lon };
+                        var latLog = { lat: caminhoneiro.Lat, lng: caminhoneiro.Lon };
 
                         var iconRadar = {
                             url: "../../imgs/icons/caminhao-icon.png",
@@ -230,12 +238,12 @@
                         var contentString =
                             `<div id="content">
                                 <div id="siteNotice">
-                                <h1 id="firstHeading" class="firstHeading">${caminhoneiros[i].Placa}</h1>
+                                <h1 id="firstHeading" class="firstHeading">${caminhoneiro.Placa}</h1>
                                 <hr>
                                 <div id="bodyContent">
-                                    <div style="padding-top:10px;"><b>Nome Do Caminhoneiro: </b> ${caminhoneiros[i].Caminhoneiro} </div>
-                                    <div style="padding-top:10px;"><b>Último CheckPoint: </b>${caminhoneiros[i].UltimoCheckPoint}</div>
-                                    <div style="padding-top:10px;"><b>Status de viagem: </b> <div class="div-bg-${caminhoneiros[i].Status}"></div> </div>
+                                    <div style="padding-top:10px;"><b>Nome Do Caminhoneiro: </b> ${caminhoneiro.Caminhoneiro} </div>
+                                    <div style="padding-top:10px;"><b>Último CheckPoint: </b>${caminhoneiro.UltimoCheckPoint}</div>
+                                    <div style="padding-top:10px;"><b>Status de viagem: </b> <div class="div-bg-${caminhoneiro.Status}"></div> </div>
                                 <div>
                             </div>
                             `;
@@ -266,10 +274,6 @@
 
                         markers.push(marker);
 
-                    }
-
-                    markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
-
                 }
 
 
@@ -285,78 +289,19 @@
                     }
 
 
-                    /* Cria Grafico Baseado na aleatoriedade */
-                    Highcharts.chart('grafico-lugares', {
-                        chart: {
-                            plotBackgroundColor: null,
-                            plotBorderWidth: null,
-                            plotShadow: false,
-                            type: 'pie'
-                        },
-                        title: {
-                            text: 'Locais que mais ocorrem'
-                        },
-                        tooltip: {
-                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                        },
-                        accessibility: {
-                            point: {
-                                valueSuffix: '%'
-                            }
-                        },
-                        plotOptions: {
-                            pie: {
-                                allowPointSelect: true,
-                                cursor: 'pointer',
-                                dataLabels: {
-                                    enabled: false
-                                },
-                                showInLegend: true
-                            }
-                        },
-                        series: [{
-                            name: 'Lugares',
-                            colorByPoint: true,
-                            data: [
-                                {
-                                name: 'Av. Bandeirantes',
-                                y: valores[6],
-                                sliced: true,
-                                selected: true
-                            },
-                            {
-                                name: 'Rodoanel Mário Covas',
-                                y: valores[1]
-                            }, {
-                                name: 'Rodovia José Augusto Freire',
-                                y: valores[4]
-                            }, {
-                                name: 'Rodovia Padre Manuel da Nóbrega',
-                                y: valores[2]
-                            }, {
-                                name: 'Rodovia Presidente Dutra',
-                                y: valores[9]
-                            }, {
-                                name: 'Rodovia D. Pedro I',
-                                y: valores[0]
-                            }]
-                        }]
-                    });
-
-
                     Highcharts.chart('grafico-qtd-notificacoes-dia', {
                         chart: {
                             type: 'line'
                         },
                         title: {
-                            text: 'Notificações desse tipo diárias'
+                            text: 'Média de km Rodados Por Dia'
                         },
                         xAxis: {
                             categories: ['Domingo','Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado']
                         },
                         yAxis: {
                             title: {
-                                text: 'Quantidade'
+                                text: 'Kms'
                             }
                         },
                         plotOptions: {
@@ -368,7 +313,7 @@
                             }
                         },
                         series: [{
-                            name: 'Notificações',
+                            name: 'Media de Km Rodados / dia',
                             data: [valores[0], valores[1], valores[2], valores[3], valores[4], valores[5], valores[6]],
                             color: '#09b0ed'
                         }]
@@ -380,45 +325,6 @@
 
 
 
-                $('#list-acidentes-list').click(function(){
-                    var div = document.getElementById('div-chat-avisos-acidente')
-                    var chat = document.getElementById('chat-avisos-acidente')
-                    chat.remove();
-                    div.innerHTML =
-                    `
-                       <div id="chat-avisos-acidente"></div>
-                    `;
-                    chat = document.getElementById('chat-avisos-acidente')
-
-                    var cards = GetCardsAcidentesAviso();
-
-                    cards.forEach(card => {
-
-                        var conteudo =
-                        `
-                        <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
-                                          <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
-                                            <div class="row no-gutters">
-                                              <div class="col-md-4">
-                                                <img width="50" src="imgs/perfis/caminhoneiro-${card.CaminhoneiroId}.png" class="card-img rounded m-2 mt-5" style="border: 3px #09b0ed solid;">
-                                              </div>
-                                              <div class="col-md-8">
-                                                <div class="card-body">
-                                                  <h5 class="card-title text-dark">${card.NomeCaminhoneiro}</h5>
-                                                  <p class="card-text">${card.Texto}</p>
-                                                  <p class="card-desc">${card.Marca} - ${card.Cor}<br>Placa: ${card.Placa}</p>
-                                                  <p class="card-text text-dark">${card.Data}</p>
-                                                </div>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        </a>
-                        `;
-
-                        div.innerHTML += conteudo;
-                    });
-                    CriaGraficosAleatorio();
-                });
 
 
                 function CarregaUsuario (idCaminhoneiro)
@@ -446,11 +352,10 @@
 
                         var conteudo =
                         `
-                        <a href="Home/CaminhoneiroPage?caminhoneiro=${msg.CaminhoneiroId}">
-                                          <div class="card mb-3 bg-fundo bg-${msg.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
+                                          <div class="w-100 card mb-3 bg-fundo bg-${msg.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
                                             <div class="row no-gutters">
                                               <div class="col-md-4">
-                                                <img width="50" src="imgs/perfis/caminhoneiro-${msg.CaminhoneiroId}.png" class="card-img rounded m-2 mt-5" style="border: 3px #09b0ed solid;">
+                                                <img width="50" src="../imgs/perfis/caminhoneiro-${msg.CaminhoneiroId}.png" class="card-img rounded m-2 mt-5" style="border: 3px #09b0ed solid;">
                                               </div>
                                               <div class="col-md-8">
                                                 <div class="card-body">
@@ -462,11 +367,9 @@
                                               </div>
                                             </div>
                                           </div>
-                                        </a>
                         `;
 
                         divMensagens.innerHTML += conteudo;
-
                     });
 
 
@@ -476,6 +379,7 @@
                             <div class="div-bg-${caminhoneiro.Status}"></div>
                             <p>${caminhoneiro.StatusDescricao}</p>
                         `;
+
 
 
                 }
@@ -496,11 +400,29 @@
                 }
 
 
+                function AchaMsgsCaminhoneiro(idCaminhoneiro)
+                {
+                    var lstMsgsRetorno = [];
+
+                    var msgs = GetTodasMensagens();
+
+                    msgs.forEach(msg => {
+                            if (msg.CaminhoneiroId == idCaminhoneiro) {
+                                lstMsgsRetorno.push(msg);
+                            }
+                    });
+
+                    return lstMsgsRetorno;
+                }
+
+
 
 
                 /* CHAMANDO FUNÇÕES*/
                 CarregaUsuario(caminhoneiroEscolhido);
-                CriaRadaresNoMapa(caminhoneiros, mapaTodosCaminhoes);
+                var caminhoneiro = AchaCaminhoneiro(caminhoneiroEscolhido);
+                CriaRadaresNoMapa(caminhoneiro, mapaTodosCaminhoes);
+                CriaGraficosAleatorio();
 
             });
 
