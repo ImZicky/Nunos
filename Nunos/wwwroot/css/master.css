@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kadwa&display=swap');
+
+
+body
+{
+    background: linear-gradient(#0e2b3b, #09b0ed);
+}
+
+#mapa-todos-caminhoes
+{
+    background: #808080;
+    height: 400px;
+    width: 100%;
+}
+
+h2.titulo
+{
+    color: #09b0ed;
+    font-size: 30px;
+    font-weight: 800;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.titulo-menu
+{
+    font-family: 'Kadwa', serif;
+    color: #09b0ed;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+    margin: 5px;
+}
+.nav-link {
+    font-family: 'Kadwa', serif;
+    color: #09b0ed;
+    font-size: 22px;
+    text-align: center;
+    margin: 5px;
+    text-transform:uppercase;
+}
+.nav-link :hover{
+    background: #09b0ed !important;
+    border-radius: 10px;
+    transition-duration: 200ms;
+    color: #fff!important;
+}
+
+.card-title {
+    font-family: 'Kadwa', serif;
+    color: #09b0ed;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+    text-align: center;
+    background: #09b0ed77;
+    margin: 5px;
+    text-transform: uppercase;
+}
+.card-text
+{
+    font-family: 'Kadwa', serif;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 5px;
+    color: #fff;
+    text-align: left;
+    background: #09b0ed77;
+    margin: 5px;
+    text-indent: 25px;
+}
+
+.card-desc
+{
+    font-family: 'Kadwa', serif;
+    color: #09b0ed;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: 5px;
+    color: #fff;
+    text-align: center;
+    background: #09b0ed77;
+    margin: 5px;
+}
+
+.text-dark
+{
+    color: #202020!important;
+}
+
+a.active
+{
+    background: #09b0ed!important;
+    border: 1px #0584b3 solid!important;
+    border-radius: 0px 20px 20px 0px;
+}
+
+
+.chat-avisos
+{
+    height: 550px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+
+/* GRAFICOS */
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 360px; 
+    max-width: 500px;
+}
+
+.highcharts-data-table table {
+    font-family: 'Kadwa', serif;
+	border-collapse: collapse;
+	border: 1px solid #EBEBEB;
+	margin: 10px auto;
+	text-align: center;
+	width: 100%;
+	max-width: 500px;
+}
+
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #202020;
+}
+
+.highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+}
+
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.highcharts-data-table tr:hover {
+    background: #f1f7ff;
+}
+
+
+/* BARRAS */
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #202020;
+}
+
+::-webkit-scrollbar-thumb {
+    margin: 2px;
+    background: rgb(34, 154, 235);
+}
+
+::-webkit-resizer {
+    background: #ffffff;
+}
+
+
+/* BACKGROUNDS */
+.bg-amarelo
+{
+    background: #dfc90844!important;
+}
+
+.bg-vermelho
+{
+    background: #df080857!important;
+}
+
+.bg-verde
+{
+    background: #0fdf0844!important;
+}
+
+.bg-laranja
+{
+    background: #df820844!important;
+}
+
+.div-bg-amarelo
+{
+    float: right;
+    background: #dfc908!important;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+.div-bg-vermelho
+{
+    float: right;
+    background: #df0808!important;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+.div-bg-verde
+{
+    float: right;
+    background: #0fdf08!important;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+.div-bg-laranja
+{
+    float: right;
+    background: #df8208!important;
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+}
+
+/* ZOOM */
+
+.zoom {
+	overflow: hidden;
+    float: left;
+}
+
+.zoom img {
+  max-width: 100%;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.zoom:hover img {
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}
+
+
+footer {
+    overflow: hidden;
+    color: #fff;
+    height: 300px;
+    background-color: #101010;
+}
+
+    footer div p {
+        text-align: center;
+    }
+
+
+    footer div h4 {
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+    }
+
+    footer div img {
+        position: relative;
+        margin-top: 50px;
+        left: 50%;
+        margin-left: -50px;
+    }

@@ -1,0 +1,515 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Perfil Caminhoneiro";
+}
+
+
+
+<div class="container-fluid">
+
+    <div class="row mt-4 mr-5 ml-5 mb-2 p-3 bg-light rounded">
+
+        <div class="col-4">
+            <h2 class="titulo">Usuário</h2>
+            <hr>
+            <div id="div-usuario" class="w-100">
+
+
+            </div>
+        </div>
+
+        <div class="col-4">
+            <h2 class="titulo">Mensagens</h2>
+            <hr>
+            <div class="w-100">
+                <div class="tab-pane fade" id="list-bloqueios" role="tabpanel" aria-labelledby="list-bloqueios-list">
+                    <div id="div-chat-avisos-msgs" class="chat-avisos">
+                        <div id="chat-avisos-msgs">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <h2 class="titulo">Status</h2>
+            <hr>
+            <div class="w-100">
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_DA_API_DO_GOOGLE_MAPS_AQUI=initMap" defer></script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+
+<script src="~/js/funcoes.js"></script>
+
+<script>
+            $(document).ready(function(){
+
+                /* VARIAVEIS GLOBAIS */
+                var mapaTodosCaminhoes = $('#mapa-todos-caminhoes');
+                var markers = [];
+                var markersAnteriores;
+                var centro;
+                var zoom;
+                var markerCluster;
+                var caminhoes = [];
+                var caminhoneiroEscolhido = @(ViewBag.CaminhoneiroId);
+                var caminhoneiros = GetCaminhoneiros();
+
+
+
+                /* funçoes */
+                function initMapaTodosCaminhoes() {
+                    centro = { lat: -23.603511, lng: -46.680199 };
+                    mapaTodosCaminhoes = new google.maps.Map(document.getElementById('mapa-todos-caminhoes'), {
+                        zoom: 14,
+                        center: centro,
+                        styles: [
+                            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+                            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+                            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+                            {
+                            featureType: 'administrative.locality',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#d59563'}]
+                            },
+                            {
+                            featureType: 'poi',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#d59563'}]
+                            },
+                            {
+                            featureType: 'poi.park',
+                            elementType: 'geometry',
+                            stylers: [{color: '#263c3f'}]
+                            },
+                            {
+                            featureType: 'poi.park',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#6b9a76'}]
+                            },
+                            {
+                            featureType: 'road',
+                            elementType: 'geometry',
+                            stylers: [{color: '#38414e'}]
+                            },
+                            {
+                            featureType: 'road',
+                            elementType: 'geometry.stroke',
+                            stylers: [{color: '#212a37'}]
+                            },
+                            {
+                            featureType: 'road',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#9ca5b3'}]
+                            },
+                            {
+                            featureType: 'road.highway',
+                            elementType: 'geometry',
+                            stylers: [{color: '#746855'}]
+                            },
+                            {
+                            featureType: 'road.highway',
+                            elementType: 'geometry.stroke',
+                            stylers: [{color: '#1f2835'}]
+                            },
+                            {
+                            featureType: 'road.highway',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#f3d19c'}]
+                            },
+                            {
+                            featureType: 'transit',
+                            elementType: 'geometry',
+                            stylers: [{color: '#2f3948'}]
+                            },
+                            {
+                            featureType: 'transit.station',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#d59563'}]
+                            },
+                            {
+                            featureType: 'water',
+                            elementType: 'geometry',
+                            stylers: [{color: '#17263c'}]
+                            },
+                            {
+                            featureType: 'water',
+                            elementType: 'labels.text.fill',
+                            stylers: [{color: '#515c6d'}]
+                            },
+                            {
+                            featureType: 'water',
+                            elementType: 'labels.text.stroke',
+                            stylers: [{color: '#17263c'}]
+                            }
+                        ]
+                    });
+                }
+
+
+                /* FUNCÃO DE DESENHAR OBJETOS NO MAPA */
+                function DesenhaMarkersNoMapa(map, markersAnteriores) {
+                    if (markersAnteriores != null) {
+                        for (var i = 0; i < markersAnteriores.length; i++) {
+                            markersAnteriores[i].setMap(null);
+                        }
+                    }
+                    else
+                    {
+                        for (var i = 0; i < markers.length; i++) {
+                            markers[i].setMap(map);
+                        }
+                    }
+                }
+
+                // Remove os markers do mapa, mas mantém no array.
+                function LimpaMarkers(markersAnteriores) {
+                    DesenhaMarkersNoMapa(null, markersAnteriores);
+                }
+
+                // Deleta todos os markers no array retirando a referencia a eles.
+                function DeletaMarkers() {
+                    LimpaMarkers(markersAnteriores);
+                    markers = [];
+                }
+
+                /* DESENHOS */
+                function CriaRadaresNoMapa(caminhoneiros, map) {
+
+                    for (i = 0; i < caminhoneiros.length; i++) {
+
+                        var latLog = { lat: caminhoneiros[i].Lat, lng: caminhoneiros[i].Lon };
+
+                        var iconRadar = {
+                            url: "../../imgs/icons/caminhao-icon.png",
+                            scaledSize: new google.maps.Size(100, 55)
+                        }
+
+                        var contentString =
+                            `<div id="content">
+                                <div id="siteNotice">
+                                <h1 id="firstHeading" class="firstHeading">${caminhoneiros[i].Placa}</h1>
+                                <hr>
+                                <div id="bodyContent">
+                                    <div style="padding-top:10px;"><b>Nome Do Caminhoneiro: </b> ${caminhoneiros[i].Caminhoneiro} </div>
+                                    <div style="padding-top:10px;"><b>Último CheckPoint: </b>${caminhoneiros[i].UltimoCheckPoint}</div>
+                                    <div style="padding-top:10px;"><b>Status de viagem: </b> <div class="div-bg-${caminhoneiros[i].Status}"></div> </div>
+                                <div>
+                            </div>
+                            `;
+
+                        var infoWindow = new google.maps.InfoWindow({
+                            content: contentString
+                        });
+
+                        var marker = new google.maps.Marker({
+                            position: latLog,
+                            map: map,
+                            icon: iconRadar,
+                        });
+
+                        google.maps.event.addListener(marker, 'mouseover', (function (marker, contentString, infoWindow) {
+                            return function () {
+                                infoWindow.setContent(contentString);
+                                infoWindow.open(map, marker);
+                            };
+                        })(marker, contentString, infoWindow));
+
+                        google.maps.event.addListener(marker, 'mouseout', (function (marker, contentString, infoWindow) {
+                            return function () {
+                                infoWindow.setContent(contentString);
+                                infoWindow.close();
+                            };
+                        })(marker, contentString, infoWindow));
+
+                        markers.push(marker);
+
+                    }
+
+                    markerCluster = new MarkerClusterer(map, markers, { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' });
+
+                }
+
+
+
+                function CriaGraficosAleatorio()
+                {
+                    var valores = []
+
+                    for(var i = 0; i < 10; i++)
+                    {
+                        var nr = Math.ceil(Math.random( 1, 100) * 10);
+                        valores.push(nr);
+                    }
+
+
+                    /* Cria Grafico Baseado na aleatoriedade */
+                    Highcharts.chart('grafico-lugares', {
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Locais que mais ocorrem'
+                        },
+                        tooltip: {
+                            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                        },
+                        accessibility: {
+                            point: {
+                                valueSuffix: '%'
+                            }
+                        },
+                        plotOptions: {
+                            pie: {
+                                allowPointSelect: true,
+                                cursor: 'pointer',
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                showInLegend: true
+                            }
+                        },
+                        series: [{
+                            name: 'Lugares',
+                            colorByPoint: true,
+                            data: [
+                                {
+                                name: 'Av. Bandeirantes',
+                                y: valores[6],
+                                sliced: true,
+                                selected: true
+                            },
+                            {
+                                name: 'Rodoanel Mário Covas',
+                                y: valores[1]
+                            }, {
+                                name: 'Rodovia José Augusto Freire',
+                                y: valores[4]
+                            }, {
+                                name: 'Rodovia Padre Manuel da Nóbrega',
+                                y: valores[2]
+                            }, {
+                                name: 'Rodovia Presidente Dutra',
+                                y: valores[9]
+                            }, {
+                                name: 'Rodovia D. Pedro I',
+                                y: valores[0]
+                            }]
+                        }]
+                    });
+
+
+                    Highcharts.chart('grafico-qtd-notificacoes-dia', {
+                        chart: {
+                            type: 'line'
+                        },
+                        title: {
+                            text: 'Notificações desse tipo diárias'
+                        },
+                        xAxis: {
+                            categories: ['Domingo','Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado']
+                        },
+                        yAxis: {
+                            title: {
+                                text: 'Quantidade'
+                            }
+                        },
+                        plotOptions: {
+                            line: {
+                                dataLabels: {
+                                    enabled: false
+                                },
+                                enableMouseTracking: true
+                            }
+                        },
+                        series: [{
+                            name: 'Notificações',
+                            data: [valores[0], valores[1], valores[2], valores[3], valores[4], valores[5], valores[6]],
+                            color: '#09b0ed'
+                        }]
+                    });
+
+                }
+
+
+
+
+
+                $('#list-acidentes-list').click(function(){
+                    var div = document.getElementById('div-chat-avisos-acidente')
+                    var chat = document.getElementById('chat-avisos-acidente')
+                    chat.remove();
+                    div.innerHTML =
+                    `
+                       <div id="chat-avisos-acidente"></div>
+                    `;
+                    chat = document.getElementById('chat-avisos-acidente')
+
+                    var cards = GetCardsAcidentesAviso();
+
+                    cards.forEach(card => {
+
+                        var conteudo =
+                        `
+                        <a href="Home/CaminhoneiroPage?caminhoneiro=${card.CaminhoneiroId}">
+                                          <div class="card mb-3 bg-fundo bg-${card.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
+                                            <div class="row no-gutters">
+                                              <div class="col-md-4">
+                                                <img width="50" src="imgs/perfis/caminhoneiro-${card.CaminhoneiroId}.png" class="card-img rounded m-2 mt-5" style="border: 3px #09b0ed solid;">
+                                              </div>
+                                              <div class="col-md-8">
+                                                <div class="card-body">
+                                                  <h5 class="card-title text-dark">${card.NomeCaminhoneiro}</h5>
+                                                  <p class="card-text">${card.Texto}</p>
+                                                  <p class="card-desc">${card.Marca} - ${card.Cor}<br>Placa: ${card.Placa}</p>
+                                                  <p class="card-text text-dark">${card.Data}</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </a>
+                        `;
+
+                        div.innerHTML += conteudo;
+                    });
+                    CriaGraficosAleatorio();
+                });
+
+
+                function CarregaUsuario (idCaminhoneiro)
+                {
+                    var caminhoneiro = AchaCaminhoneiro(idCaminhoneiro);
+
+
+                    var divUsuario = document.getElementById('div-usuario')
+                    divUsuario.innerHTML =
+                        `
+                            <img width="200" src="/imgs/perfis/caminhoneiro-${caminhoneiro.Id}.png" style="border: 3px #09b0ed solid; margin-left: 25%;" class="rounded mb-2">
+                            <h5 class="card-title text-dark text-center">${caminhoneiro.Caminhoneiro}</h5>
+                            <div class="card-text">
+                                <p class=" text-center">Idade: ${caminhoneiro.Idade}</p>
+                                <p class="card-text text-dark text-center">Estado Cívil: ${caminhoneiro.EstadoCivil}</p>
+                                <p class="text-center">${caminhoneiro.Marca} - ${caminhoneiro.Cor}</p>
+                                <p class="text-center">Placa: ${caminhoneiro.Placa}</p>
+                            </div>
+                        `;
+
+                    var msgsCaminhoneiro = AchaMsgsCaminhoneiro(idCaminhoneiro);
+                    var divMensagens = document.getElementById('div-mensagens')
+
+                    msgsCaminhoneiro.forEach(msg => {
+
+                        var conteudo =
+                        `
+                        <a href="Home/CaminhoneiroPage?caminhoneiro=${msg.CaminhoneiroId}">
+                                          <div class="card mb-3 bg-fundo bg-${msg.CorFundo} zoom" style="max-width: 100%; border: 3px #09b0ed solid;" >
+                                            <div class="row no-gutters">
+                                              <div class="col-md-4">
+                                                <img width="50" src="imgs/perfis/caminhoneiro-${msg.CaminhoneiroId}.png" class="card-img rounded m-2 mt-5" style="border: 3px #09b0ed solid;">
+                                              </div>
+                                              <div class="col-md-8">
+                                                <div class="card-body">
+                                                  <h5 class="card-title text-dark">${msg.NomeCaminhoneiro}</h5>
+                                                  <p class="card-text">${msg.Texto}</p>
+                                                  <p class="card-desc">${msg.Marca} - ${msg.Cor}<br>Placa: ${msg.Placa}</p>
+                                                  <p class="card-text text-dark">${msg.Data}</p>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </a>
+                        `;
+
+                        divMensagens.innerHTML += conteudo;
+
+                    });
+
+
+                    var divStatus = document.getElementById('div-status')
+                    divStatus.innerHTML =
+                        `
+                            <div class="div-bg-${caminhoneiro.Status}"></div>
+                            <p>${caminhoneiro.StatusDescricao}</p>
+                        `;
+
+
+                }
+
+                function AchaCaminhoneiro(idCaminhoneiro)
+                {
+                    var caminhoneiroEscolhido;
+
+                    caminhoneiros.forEach(c => {
+
+                        if (c.Id == idCaminhoneiro)
+                        {
+                            caminhoneiroEscolhido = c;
+                        }
+                    });
+
+                    return caminhoneiroEscolhido;
+                }
+
+
+
+
+                /* CHAMANDO FUNÇÕES*/
+                CarregaUsuario(caminhoneiroEscolhido);
+                CriaRadaresNoMapa(caminhoneiros, mapaTodosCaminhoes);
+
+            });
+
+
+
+
+
+</script>
+
+
+
+
