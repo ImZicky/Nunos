@@ -66,7 +66,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=CHAVEDOGOOGLEAQUI&callback=initMap" defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=CHAVE_DO_GOOGLE_AQUI&callback=initMap" defer></script>
 
 
 
@@ -96,7 +96,7 @@
             $(document).ready(function(){
 
                 /* VARIAVEIS GLOBAIS */
-                var mapaTodosCaminhoes = document.getElementById('mapa-todos-caminhoes');
+                var mapaTodosCaminhoes;
                 var markers = [];
                 var markersAnteriores;
                 var centro;
@@ -109,10 +109,10 @@
 
 
                 /* funçoes */
-                function initMapaTodosCaminhoes() {
-                    centro = { lat: -23.603511, lng: -46.680199 };
+                function initMapaTodosCaminhoes(caminhoneiro) {
+                    centro = { lat: caminhoneiro.Lat, lng: caminhoneiro.Lon };
                     mapaTodosCaminhoes = new google.maps.Map(document.getElementById('mapa-todos-caminhoes'), {
-                        zoom: 14,
+                        zoom: 19,
                         center: centro,
                         styles: [
                             {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
@@ -229,10 +229,17 @@
 
 
                         var latLog = { lat: caminhoneiro.Lat, lng: caminhoneiro.Lon };
+                        var latLog2 = { lat: caminhoneiro.Lat - 0.00020, lng: caminhoneiro.Lon - 0.00020};
+                        var latLog3 = { lat: caminhoneiro.Lat + 0.00020, lng: caminhoneiro.Lon + 0.00020 };
 
                         var iconRadar = {
                             url: "../../imgs/icons/caminhao-icon.png",
                             scaledSize: new google.maps.Size(100, 55)
+                        }
+
+                        var iconNunosPt = {
+                            url: "../../imgs/icons/nunos-ponto-icon.png",
+                            scaledSize: new google.maps.Size(60, 60)
                         }
 
                         var contentString =
@@ -252,11 +259,51 @@
                             content: contentString
                         });
 
+                    var contentString2 =
+                        `<div id="content">
+                                <div id="siteNotice">
+                                <h1 id="firstHeading" class="firstHeading">Nunos#02</h1>
+                                <hr>
+                            </div>
+                            `;
+                    var contentString3 =
+                        `<div id="content">
+                                <div id="siteNotice">
+                                <h1 id="firstHeading" class="firstHeading">Nunos#03</h1>
+                                <hr>
+                            </div>
+                            `;
+
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+
+                    var infoWindow2 = new google.maps.InfoWindow({
+                        content: contentString2
+                    });
+
+                    var infoWindow3 = new google.maps.InfoWindow({
+                        content: contentString3
+                    });
+
                         var marker = new google.maps.Marker({
                             position: latLog,
                             map: map,
                             icon: iconRadar,
                         });
+
+                        var marker2 = new google.maps.Marker({
+                            position: latLog2,
+                            map: map,
+                            icon: iconNunosPt,
+                        });
+
+                        var marker3 = new google.maps.Marker({
+                            position: latLog3,
+                            map: map,
+                            icon: iconNunosPt,
+                        });
+
 
                         google.maps.event.addListener(marker, 'mouseover', (function (marker, contentString, infoWindow) {
                             return function () {
@@ -272,7 +319,43 @@
                             };
                         })(marker, contentString, infoWindow));
 
+
+
+                    google.maps.event.addListener(marker2, 'mouseover', (function (marker2, contentString2, infoWindow2) {
+                        return function () {
+                            infoWindow2.setContent(contentString2);
+                            infoWindow2.open(map, marker2);
+                        };
+                    })(marker2, contentString2, infoWindow2));
+
+                    google.maps.event.addListener(marker2, 'mouseout', (function (marker2, contentString2, infoWindow2) {
+                        return function () {
+                            infoWindow2.setContent(contentString2);
+                            infoWindow2.close();
+                        };
+                    })(marker, contentString2, infoWindow2));
+
+
+
+                    google.maps.event.addListener(marker3, 'mouseover', (function (marker3, contentString3, infoWindow3) {
+                        return function () {
+                            infoWindow3.setContent(contentString3);
+                            infoWindow3.open(map, marker3);
+                        };
+                    })(marker3, contentString3, infoWindow3));
+
+                    google.maps.event.addListener(marker3, 'mouseout', (function (marker3, contentString3, infoWindow3) {
+                        return function () {
+                            infoWindow3.setContent(contentString3);
+                            infoWindow3.close();
+                        };
+                    })(marker, contentString3, infoWindow3));
+
+
+
                         markers.push(marker);
+                        markers.push(marker2);
+                        markers.push(marker3);
 
                 }
 
@@ -379,9 +462,6 @@
                             <div class="div-bg-${caminhoneiro.Status}"></div>
                             <p>${caminhoneiro.StatusDescricao}</p>
                         `;
-
-
-
                 }
 
                 function AchaCaminhoneiro(idCaminhoneiro)
@@ -421,6 +501,7 @@
                 /* CHAMANDO FUNÇÕES*/
                 CarregaUsuario(caminhoneiroEscolhido);
                 var caminhoneiro = AchaCaminhoneiro(caminhoneiroEscolhido);
+                initMapaTodosCaminhoes(caminhoneiro);
                 CriaRadaresNoMapa(caminhoneiro, mapaTodosCaminhoes);
                 CriaGraficosAleatorio();
 
